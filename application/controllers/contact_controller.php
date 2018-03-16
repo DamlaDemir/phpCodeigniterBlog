@@ -5,8 +5,6 @@ class contact_controller extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-
-	
 	}
 
 	function index()
@@ -22,8 +20,8 @@ class contact_controller extends CI_Controller
 			$this->form_validation->set_rules('email','email','required');
 			$this->form_validation->set_rules('phone','phone','required');
 			$this->form_validation->set_rules('message','message','required');
-			if($this->form_validation->run()==TRUE){
-			
+			if($this->form_validation->run()==TRUE)
+			{
 			    $config=array(
 				"protocol"=>"smtp",
 				"smtp_host"=>"ssl://smtp.gmail.com",
@@ -37,30 +35,31 @@ class contact_controller extends CI_Controller
 				"newline"=>"\r\n"
 				);
 
-			$this->load->library("email",$config);
-            $name=$this->input->post('name');
-            $email=$this->input->post('email');
-            $phone=$this->input->post('phone');
-            $message=$this->input->post('message');
+				$this->load->library("email",$config);
+	            $name=$this->input->post('name');
+	            $email=$this->input->post('email');
+	            $phone=$this->input->post('phone');
+	            $message=$this->input->post('message');
 
-		
-			$this->email->from("damlanin.blogu@gmail.com");
-			$this->email->to("dmldemirr@gmail.com");
-			$this->email->subject("Konu");
-			$this->email->message("sdgdsgdsgsgdsgs");
-			$send=$this->email->send();
-			if($send)
-			{
-					echo "BAŞARILI";
+				$this->email->from("damlanin.blogu@gmail.com");
+				$this->email->to("dmldemirr@gmail.com");
+				$this->email->subject("Konu");
+				$this->email->message("sdgdsgdsgsgdsgs");
+				$send=$this->email->send();
+					
+					if($send)
+					{
+							echo "BAŞARILI";
+					}
+					else
+					{
+							echo "BAŞARISIZ";
+							echo $this->email->print_debugger();
+					}			
 			}
-			else
-			{
-					echo "BAŞARISIZ";
-					echo $this->email->print_debugger();
-			}
-	}
 
-  }
+  		}
 	}
 }
+
 ?>

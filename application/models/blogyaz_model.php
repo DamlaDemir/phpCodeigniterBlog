@@ -10,12 +10,12 @@ class blogyaz_model extends CI_Model
 	}
 
 	function index(){
-
 		
 	}
+
 	public function blogYazisiEkle($formData)
 	{
-	$this->db->insert('makale',$formData);
+	     $this->db->insert('makale',$formData);
 
 	}
 
@@ -24,4 +24,5 @@ class blogyaz_model extends CI_Model
 		 $this->db->delete('makale', array('makaleId' => $makaleId));
 	}
 }
+
 ?>

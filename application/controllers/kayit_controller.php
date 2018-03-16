@@ -6,9 +6,8 @@ class kayit_controller extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("kayit_model");
-		 $this->load->helper('url');
-        $this->load->library('form_validation');
-	
+		$this->load->helper('url');
+        $this->load->library('form_validation');	
 	}
 
 	function index()
@@ -31,32 +30,28 @@ class kayit_controller extends CI_Controller
 			$this->form_validation->set_rules('comment','Comment','required');
 			$this->form_validation->set_rules('phone','Phone','required');
            
-         
-	     if($this->form_validation->run()==TRUE){
-			$formData =array (
-           'ad'=>$this->input->post('first_name'),
-           'soyad'=>$this->input->post("last_name"),
-           'email'=>$this->input->post("email"),
-           'sifre'=>$this->input->post("password"),
-           'kullaniciAdi'=>$this->input->post("username"),
-           'telefon'=>$this->input->post("phone"),
-           'sehir'=>$this->input->post("city"),
-           'adres'=>$this->input->post("address"),
-           'website'=>$this->input->post("website"),
-           'kendiniTanit'=>$this->input->post("comment"),
-           'ulke'=>$this->input->post("country"),
-           'cinsiyet'=>$this->input->post("gender"),
+	         
+			     if($this->form_validation->run()==TRUE)
+			     {
+					$formData =array (
+		           'ad'=>$this->input->post('first_name'),
+		           'soyad'=>$this->input->post("last_name"),
+		           'email'=>$this->input->post("email"),
+		           'sifre'=>$this->input->post("password"),
+		           'kullaniciAdi'=>$this->input->post("username"),
+		           'telefon'=>$this->input->post("phone"),
+		           'sehir'=>$this->input->post("city"),
+		           'adres'=>$this->input->post("address"),
+		           'website'=>$this->input->post("website"),
+		           'kendiniTanit'=>$this->input->post("comment"),
+		           'ulke'=>$this->input->post("country"),
+		           'cinsiyet'=>$this->input->post("gender"),
+		           	);
 
-
-           );
-
-            $this->kayit_model->uyeEkle($formData);
-            redirect("login_controller/index");
-
+		            $this->kayit_model->uyeEkle($formData);
+		            redirect("login_controller/index");
+				 }
 		}
-
-		
-        }
 
 		else 
 		{
@@ -64,6 +59,6 @@ class kayit_controller extends CI_Controller
 				$this->load->view('login',$data);
 		}
 	}
-
 }
+
 ?>

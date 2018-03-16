@@ -25,11 +25,10 @@ class anasayfa_controller extends CI_Controller
     
           	$this->load->view("anasayfa",$dataArray);
 		}
-		else{
+		else
+		{
 			redirect("login_controller/index");
 		}
-
-
 	}
 }
 ?>
